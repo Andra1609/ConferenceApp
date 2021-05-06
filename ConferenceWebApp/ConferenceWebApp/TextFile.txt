@@ -1,0 +1,1 @@
+﻿The app shows details about conferences and their sponsors.
