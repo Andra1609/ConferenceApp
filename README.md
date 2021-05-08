@@ -3,6 +3,8 @@
 ## Description
 CRUD application created in C# for conferences and sponsors. This project follows the MVC (Model, View, Controller) structure.
 
+### Create a conference
+
 ## Technologies
 | Dependency | Version |
 | --- | ----------- |
