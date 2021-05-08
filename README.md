@@ -2,22 +2,28 @@
 
 ## Description
 CRUD application created in C# for conferences and sponsors. This project follows the MVC (Model, View, Controller) structure.
-![View all conferences](https://github.com/Andra1609/ConferenceApp/blob/main/readme_img/view_all_conferences.png?raw=true)
 
 ### Create a conference
+![View all conferences](https://github.com/Andra1609/ConferenceApp/blob/main/readme_img/view_all_conferences.png?raw=true)
 ![Create a conference](https://github.com/Andra1609/ConferenceApp/blob/main/readme_img/create_conference.png?raw=true)
+![Added a conference](https://github.com/Andra1609/ConferenceApp/blob/main/readme_img/added_conference.png?raw=true)
 
 ### Read a conference
 
 ### Update a conference
+![Update a conference](https://github.com/Andra1609/ConferenceApp/blob/main/readme_img/update_conference.png?raw=true)
+![Updated a conference](https://github.com/Andra1609/ConferenceApp/blob/main/readme_img/updated_conference.png?raw=true)
 
 ### Delete a conference
 
 ### Create a sponsor
+![Create a sponsor](https://github.com/Andra1609/ConferenceApp/blob/main/readme_img/create_sponsor.png?raw=true)
 
 ### Read a sponsor
 
 ### Update a sponsor
+![Update a sponsor](https://github.com/Andra1609/ConferenceApp/blob/main/readme_img/update_sponsor.png?raw=true)
+![Updated a sponsor](https://github.com/Andra1609/ConferenceApp/blob/main/readme_img/updated_sponsor.png?raw=true)
 
 ### Delete a sponsor
 
