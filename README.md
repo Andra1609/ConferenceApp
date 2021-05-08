@@ -6,6 +6,20 @@ CRUD application created in C# for conferences and sponsors. This project follow
 ### Create a conference
 ![view all conferences](https://github.com/Andra1609/ConferenceApp/blob/main/readme_img/Screenshot_1.png?raw=true)
 
+### Read a conference
+
+### Update a conference
+
+### Delete a conference
+
+### Create a sponsor
+
+### Read a sponsor
+
+### Delete a sponsor
+
+### Update a sponsor
+
 ## Technologies
 | Dependency | Version |
 | --- | ----------- |
@@ -36,7 +50,7 @@ CRUD application created in C# for conferences and sponsors. This project follow
 * Testing the Views
 
 ### Acknowledgements
-The project was created as part of QA Academy training.
+This project was created as part of QA Academy training.
 
 ### License
 This project is licensed under the terms of the MIT license.
