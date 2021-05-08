@@ -54,17 +54,17 @@ namespace sponsorWebApp.Controllers
         [HttpPost]
         [Route("update/{id:int}")]
         // popoulate the form
-        public IActionResult Update(Sponsor sponsor)
+        public IActionResult Update(Sponsor sponsor, int id)
         {
             //var sponsorToUpdate = dbContext.Sponsors.FirstOrDefault(c => c.ID == id);
 
-            //var sponsorToUpdate = repository.Sponsors.FindByCondition(c => c.ID == id).FirstOrDefault();
-            
-            //sponsorToUpdate.Name = sponsor.Name;
-            //sponsorToUpdate.PictureURL = sponsor.PictureURL;
-            //sponsorToUpdate.Description = sponsor.Description;
+            var sponsorToUpdate = repository.Sponsors.FindByCondition(c => c.ID == id).FirstOrDefault();
+
+            sponsorToUpdate.Name = sponsor.Name;
+            sponsorToUpdate.PictureURL = sponsor.PictureURL;
+            sponsorToUpdate.Description = sponsor.Description;
             //dbContext.SaveChanges();
-            repository.Sponsors.Update(sponsor);
+            repository.Sponsors.Update(sponsorToUpdate);
             repository.Save();
             return RedirectToAction("Index");
         }

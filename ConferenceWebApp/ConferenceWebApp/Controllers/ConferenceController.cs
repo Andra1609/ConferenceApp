@@ -119,15 +119,15 @@ namespace ConferenceWebApp.Controllers
         public IActionResult Update(Conference conference, int id)
         {
             ////var conferenceToUpdate = dbContext.Conferences.FirstOrDefault(c => c.ID == id);
-            //var conferenceToUpdate = repository.Conferences.FindByCondition(c => c.ID == id).FirstOrDefault();
-            //conferenceToUpdate.Name = conference.Name;
-            //conferenceToUpdate.Description = conference.Description;
-            //conferenceToUpdate.PictureURL = conference.PictureURL;
-            //conferenceToUpdate.Place = conference.Place;
-            //conferenceToUpdate.ConferenceTime = conference.ConferenceTime;
-            //conferenceToUpdate.Free = conference.Free;
-            //conferenceToUpdate.Price = conference.Price;
-            repository.Conferences.Update(conference);
+            var conferenceToUpdate = repository.Conferences.FindByCondition(c => c.ID == id).FirstOrDefault();
+            conferenceToUpdate.Name = conference.Name;
+            conferenceToUpdate.Description = conference.Description;
+            conferenceToUpdate.PictureURL = conference.PictureURL;
+            conferenceToUpdate.Place = conference.Place;
+            conferenceToUpdate.ConferenceTime = conference.ConferenceTime;
+            conferenceToUpdate.Free = conference.Free;
+            conferenceToUpdate.Price = conference.Price;
+            repository.Conferences.Update(conferenceToUpdate);
             //dbContext.SaveChanges();
             repository.Save();
             return RedirectToAction("Index");
@@ -138,7 +138,7 @@ namespace ConferenceWebApp.Controllers
         public IActionResult Delete(int id)
         {
             //var catToDelete = dbContext.Conferences.FirstOrDefault(c => c.ID == id);
-            var catToDelete = repository.Conferences.FindByCondition(c => c.ID == id).FirstOrDefault();
+            var conferenceToDelete = repository.Conferences.FindByCondition(c => c.ID == id).FirstOrDefault();
 
             var sponsorToDelete = repository.Sponsors.FindByCondition(c => c.ConferenceID == id);
             foreach(var s in sponsorToDelete)
@@ -148,7 +148,7 @@ namespace ConferenceWebApp.Controllers
             }
 
             //dbContext.Conferences.Remove(catToDelete);
-            repository.Conferences.Delete(catToDelete);
+            repository.Conferences.Delete(conferenceToDelete);
             //dbContext.SaveChanges();
             repository.Save();
             return RedirectToAction("Index");
