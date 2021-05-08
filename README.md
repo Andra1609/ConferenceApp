@@ -16,6 +16,7 @@ CRUD application created in C# for conferences and sponsors. This project follow
 ![Updated a conference](https://github.com/Andra1609/ConferenceApp/blob/main/readme_img/updated_conference.png?raw=true)
 
 ### Delete a conference
+![Deleted a conference](https://github.com/Andra1609/ConferenceApp/blob/main/readme_img/deleted_conference.png?raw=true)
 
 ### Create a sponsor
 ![Create a sponsor](https://github.com/Andra1609/ConferenceApp/blob/main/readme_img/create_sponsor.png?raw=true)
