@@ -17,7 +17,7 @@ namespace ConferenceWebApp.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 64)
                 .HasAnnotation("ProductVersion", "5.0.0");
 
-            modelBuilder.Entity("ConferenceWebApp.Models.Conference", b =>
+            modelBuilder.Entity("ConferenceWebLibrary.Models.Conference", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -49,13 +49,13 @@ namespace ConferenceWebApp.Migrations
                     b.ToTable("Conferences");
                 });
 
-            modelBuilder.Entity("ConferenceWebApp.Models.Sponsor", b =>
+            modelBuilder.Entity("ConferenceWebLibrary.Models.Sponsor", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int?>("ConferenceID")
+                    b.Property<int>("ConferenceID")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -69,23 +69,7 @@ namespace ConferenceWebApp.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex("ConferenceID");
-
                     b.ToTable("Sponsors");
-                });
-
-            modelBuilder.Entity("ConferenceWebApp.Models.Sponsor", b =>
-                {
-                    b.HasOne("ConferenceWebApp.Models.Conference", "Conference")
-                        .WithMany("Sponsors")
-                        .HasForeignKey("ConferenceID");
-
-                    b.Navigation("Conference");
-                });
-
-            modelBuilder.Entity("ConferenceWebApp.Models.Conference", b =>
-                {
-                    b.Navigation("Sponsors");
                 });
 #pragma warning restore 612, 618
         }

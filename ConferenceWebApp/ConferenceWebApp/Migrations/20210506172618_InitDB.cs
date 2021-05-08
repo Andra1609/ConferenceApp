@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace ConferenceWebAPI.Migrations
+namespace ConferenceWebApp.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class InitDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -36,7 +36,7 @@ namespace ConferenceWebAPI.Migrations
                     Name = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
                     PictureURL = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
                     Description = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
-                    ConferenceID = table.Column<int>(type: "int", nullable: true)
+                    ConferenceID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -46,7 +46,7 @@ namespace ConferenceWebAPI.Migrations
                         column: x => x.ConferenceID,
                         principalTable: "Conferences",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

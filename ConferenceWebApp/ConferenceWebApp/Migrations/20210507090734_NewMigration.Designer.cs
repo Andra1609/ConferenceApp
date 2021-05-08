@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ConferenceWebApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210505123159_ModelUpdate3")]
-    partial class ModelUpdate3
+    [Migration("20210507090734_NewMigration")]
+    partial class NewMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -19,7 +19,7 @@ namespace ConferenceWebApp.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 64)
                 .HasAnnotation("ProductVersion", "5.0.0");
 
-            modelBuilder.Entity("ConferenceWebApp.Models.Conference", b =>
+            modelBuilder.Entity("ConferenceWebLibrary.Models.Conference", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -51,14 +51,17 @@ namespace ConferenceWebApp.Migrations
                     b.ToTable("Conferences");
                 });
 
-            modelBuilder.Entity("ConferenceWebApp.Models.Sponsor", b =>
+            modelBuilder.Entity("ConferenceWebLibrary.Models.Sponsor", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int?>("ConferenceID")
+                    b.Property<int>("ConferenceID")
                         .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -68,23 +71,7 @@ namespace ConferenceWebApp.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex("ConferenceID");
-
                     b.ToTable("Sponsors");
-                });
-
-            modelBuilder.Entity("ConferenceWebApp.Models.Sponsor", b =>
-                {
-                    b.HasOne("ConferenceWebApp.Models.Conference", "Conference")
-                        .WithMany("Sponsors")
-                        .HasForeignKey("ConferenceID");
-
-                    b.Navigation("Conference");
-                });
-
-            modelBuilder.Entity("ConferenceWebApp.Models.Conference", b =>
-                {
-                    b.Navigation("Sponsors");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,6 +1,11 @@
-﻿namespace ConferenceWebLibrary.Models
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace ConferenceWebApp.Interfaces
 {
-    public class Sponsor
+    interface IUpdateSponsor
     {
         public int ID { get; set; }
         public string Name { get; set; }

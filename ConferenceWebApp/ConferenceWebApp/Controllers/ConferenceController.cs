@@ -1,4 +1,5 @@
 ﻿using ConferenceWebApp.Data;
+using ConferenceWebApp.Interfaces;
 using ConferenceWebLibrary.Models;
 using ConferenceWebLibrary.Models.Binding;
 using Microsoft.AspNetCore.Mvc;
@@ -12,18 +13,23 @@ namespace ConferenceWebApp.Controllers
     [Route("[Controller]")]
     public class ConferenceController : Controller
     {
-        private readonly ApplicationDbContext dbContext;
+        //private readonly ApplicationDbContext dbContext;
+        private IRepositoryWrapper repository;
+
         // Create constructor and inject DbContext
-        public ConferenceController(ApplicationDbContext applicationDbContext)
+        //public ConferenceController(ApplicationDbContext applicationDbContext, IRepositoryWrapper repositoryWrapper)
+        public ConferenceController(IRepositoryWrapper repositoryWrapper)
         {
-            dbContext = applicationDbContext;
+            //dbContext = applicationDbContext;
+            repository = repositoryWrapper;
         }
 
         // Read
         [Route("")]
         public IActionResult Index()
         {
-            var allConferences = dbContext.Conferences.ToList();
+            //var allConferences = dbContext.Conferences.ToList();
+            var allConferences = repository.Conferences.FindAll().ToList();
             return View(allConferences);
         }
 
@@ -31,8 +37,9 @@ namespace ConferenceWebApp.Controllers
         [Route("details/{id:int}")]
         public IActionResult Details(int id)
         {
-            // gets the cat with the specified id
-            var conferenceById = dbContext.Conferences.FirstOrDefault(c => c.ID == id);
+            // gets the conference with the specified id
+            var conferenceById = repository.Conferences.FindByCondition(c => c.ID == id).FirstOrDefault();
+            //var conferenceById = dbContext.Conferences.FirstOrDefault(c => c.ID == id);
             return View(conferenceById);
         }
 
@@ -51,8 +58,10 @@ namespace ConferenceWebApp.Controllers
                 Name = bindingModel.Name,
                 Place = bindingModel.Place
             };
-            dbContext.Conferences.Add(conferenceToCreate);
-            dbContext.SaveChanges();
+            //dbContext.Conferences.Add(conferenceToCreate);
+            repository.Conferences.Create(conferenceToCreate);
+            //dbContext.SaveChanges();
+            repository.Save();
             return RedirectToAction("Index");
         }
 
@@ -61,7 +70,8 @@ namespace ConferenceWebApp.Controllers
         [Route("addsponsor/{conferenceID:int}")]
         public IActionResult CreateSponsor(int conferenceID)
         {
-            var conference = dbContext.Conferences.FirstOrDefault(c => c.ID == conferenceID);
+            //var conference = dbContext.Conferences.FirstOrDefault(c => c.ID == conferenceID);
+            var conference = repository.Conferences.FindByCondition(c => c.ID == conferenceID).FirstOrDefault();
             ViewBag.ConferenceName = conference.Name;
             ViewBag.ConferenceID = conference.ID;
             return View();
@@ -75,18 +85,23 @@ namespace ConferenceWebApp.Controllers
             var sponsorToCreate = new Sponsor
             {
                 Name = bindingModel.Name,
-                Conference = dbContext.Conferences.FirstOrDefault(c => c.ID == conferenceID)
+                //Conference = dbContext.Conferences.FirstOrDefault(c => c.ID == conferenceID)
+                ConferenceID = conferenceID
             };
-            dbContext.Sponsors.Add(sponsorToCreate);
-            dbContext.SaveChanges();
+            //dbContext.Sponsors.Add(sponsorToCreate);
+            repository.Sponsors.Create(sponsorToCreate);
+            //dbContext.SaveChanges();
+            repository.Save();
             return RedirectToAction("Index");
         }
 
         [Route("{id:int}/sponsors")]
         public IActionResult ViewSponsors(int id)
         {
-            var conference = dbContext.Conferences.FirstOrDefault(c => c.ID == id);
-            var sponsors = dbContext.Sponsors.Where(c => c.Conference.ID == id).ToList();
+            //var conference = dbContext.Conferences.FirstOrDefault(c => c.ID == id);
+            var conference = repository.Conferences.FindByCondition(c => c.ID == id).FirstOrDefault();
+            //var sponsors = dbContext.Sponsors.Where(c => c.Conference.ID == id).ToList();
+            var sponsors = repository.Sponsors.FindByCondition(c => c.ConferenceID == id).ToList().ToList();
             ViewBag.ConferenceName = conference.Name;
             return View(sponsors);
         }
@@ -94,23 +109,27 @@ namespace ConferenceWebApp.Controllers
         [Route("update/{id:int}")]
         public IActionResult Update(int id)
         {
-            var conferenceById = dbContext.Conferences.FirstOrDefault(c => c.ID == id);
+            //var conferenceById = dbContext.Conferences.FirstOrDefault(c => c.ID == id);
+            var conferenceById = repository.Conferences.FindByCondition(c => c.ID == id).FirstOrDefault();
             return View(conferenceById);
         }
         [HttpPost]
         [Route("update/{id:int}")]
-        // popoulate the form
+        // populate the form
         public IActionResult Update(Conference conference, int id)
         {
-            var conferenceToUpdate = dbContext.Conferences.FirstOrDefault(c => c.ID == id);
-            conferenceToUpdate.Name = conference.Name;
-            conferenceToUpdate.Description = conference.Description;
-            conferenceToUpdate.PictureURL = conference.PictureURL;
-            conferenceToUpdate.Place = conference.Place;
-            conferenceToUpdate.ConferenceTime = conference.ConferenceTime;
-            conferenceToUpdate.Free = conference.Free;
-            conferenceToUpdate.Price = conference.Price;
-            dbContext.SaveChanges();
+            ////var conferenceToUpdate = dbContext.Conferences.FirstOrDefault(c => c.ID == id);
+            //var conferenceToUpdate = repository.Conferences.FindByCondition(c => c.ID == id).FirstOrDefault();
+            //conferenceToUpdate.Name = conference.Name;
+            //conferenceToUpdate.Description = conference.Description;
+            //conferenceToUpdate.PictureURL = conference.PictureURL;
+            //conferenceToUpdate.Place = conference.Place;
+            //conferenceToUpdate.ConferenceTime = conference.ConferenceTime;
+            //conferenceToUpdate.Free = conference.Free;
+            //conferenceToUpdate.Price = conference.Price;
+            repository.Conferences.Update(conference);
+            //dbContext.SaveChanges();
+            repository.Save();
             return RedirectToAction("Index");
         }
 
@@ -118,9 +137,20 @@ namespace ConferenceWebApp.Controllers
         [Route("delete/{id:int}")]
         public IActionResult Delete(int id)
         {
-            var catToDelete = dbContext.Conferences.FirstOrDefault(c => c.ID == id);
-            dbContext.Conferences.Remove(catToDelete);
-            dbContext.SaveChanges();
+            //var catToDelete = dbContext.Conferences.FirstOrDefault(c => c.ID == id);
+            var catToDelete = repository.Conferences.FindByCondition(c => c.ID == id).FirstOrDefault();
+
+            var sponsorToDelete = repository.Sponsors.FindByCondition(c => c.ConferenceID == id);
+            foreach(var s in sponsorToDelete)
+            {
+                repository.Sponsors.Delete(s);
+                repository.Save();
+            }
+
+            //dbContext.Conferences.Remove(catToDelete);
+            repository.Conferences.Delete(catToDelete);
+            //dbContext.SaveChanges();
+            repository.Save();
             return RedirectToAction("Index");
         }
     }

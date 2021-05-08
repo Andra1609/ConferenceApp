@@ -44,7 +44,8 @@ namespace ConferenceWebAPI.Controllers
             var sponsorToCreate = new Sponsor
             {
                 Name = bindingModel.Name,
-                Conference = dbContext.Conferences.FirstOrDefault(c => c.ID == bindingModel.ConferenceID)
+                ConferenceID = bindingModel.ConferenceID
+                //Conference = dbContext.Conferences.FirstOrDefault(c => c.ID == bindingModel.ConferenceID)
             };
             var createdSponsor = dbContext.Sponsors.Add(sponsorToCreate).Entity;
             dbContext.SaveChanges();
