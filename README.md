@@ -2,9 +2,11 @@
 
 ## Description
 CRUD application created in C# for conferences and sponsors. This project follows the MVC (Model, View, Controller) structure.
+![View all conferences](https://github.com/Andra1609/ConferenceApp/blob/main/readme_img/view_all_conferences.png?raw=true)
 
 ### Create a conference
-![view all conferences](https://github.com/Andra1609/ConferenceApp/blob/main/readme_img/Screenshot_1.png?raw=true)
+![Create conference](https://github.com/Andra1609/ConferenceApp/blob/main/readme_img/create_conference.png?raw=true)
+![Added conference](https://github.com/Andra1609/ConferenceApp/blob/main/readme_img/added_conference.png?raw=true)
 
 ### Read a conference
 
@@ -16,9 +18,9 @@ CRUD application created in C# for conferences and sponsors. This project follow
 
 ### Read a sponsor
 
-### Delete a sponsor
-
 ### Update a sponsor
+
+### Delete a sponsor
 
 ## Technologies
 | Dependency | Version |
