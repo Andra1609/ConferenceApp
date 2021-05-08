@@ -9,6 +9,7 @@ CRUD application created in C# for conferences and sponsors. This project follow
 ![Added a conference](https://github.com/Andra1609/ConferenceApp/blob/main/readme_img/added_conference.png?raw=true)
 
 ### Read a conference
+![Read a conference](https://github.com/Andra1609/ConferenceApp/blob/main/readme_img/read_conference.png?raw=true)
 
 ### Update a conference
 ![Update a conference](https://github.com/Andra1609/ConferenceApp/blob/main/readme_img/update_conference.png?raw=true)
@@ -18,14 +19,17 @@ CRUD application created in C# for conferences and sponsors. This project follow
 
 ### Create a sponsor
 ![Create a sponsor](https://github.com/Andra1609/ConferenceApp/blob/main/readme_img/create_sponsor.png?raw=true)
+![Created a sponsor](https://github.com/Andra1609/ConferenceApp/blob/main/readme_img/created_sponsor.png?raw=true)
 
 ### Read a sponsor
+![Read a sponsor](https://github.com/Andra1609/ConferenceApp/blob/main/readme_img/read_sponsor.png?raw=true)
 
 ### Update a sponsor
 ![Update a sponsor](https://github.com/Andra1609/ConferenceApp/blob/main/readme_img/update_sponsor.png?raw=true)
 ![Updated a sponsor](https://github.com/Andra1609/ConferenceApp/blob/main/readme_img/updated_sponsor.png?raw=true)
 
 ### Delete a sponsor
+![Deleted a sponsor](https://github.com/Andra1609/ConferenceApp/blob/main/readme_img/deleted_sponsor.png?raw=true)
 
 ## Technologies
 | Dependency | Version |
