@@ -63,7 +63,9 @@ To view all tasks associated with the user stories, please follow [this link](ht
 
 ## Database Structure
 Pictured below is an entity relationship diagram (ERD) showing the structure of the database.
+
 ![Database](https://github.com/Andra1609/ConferenceApp/blob/main/readme_img/db_diagram.png?raw=true)
+
 As shown in the ERD, the app models a one-to-many relationship between Conference entities and Sponsor entities.
 
 ### CI Pipeline
@@ -72,6 +74,7 @@ Created a pipeline with the following steps:
 * Build and compile the application
 * Publish the project to an artefact repository
 * Run the compiled code on Azure App Service
+
 ![Azure Devops](https://github.com/Andra1609/ConferenceApp/blob/main/readme_img/azure_devops.png?raw=true)
 
 ## Risk Assessment
@@ -80,6 +83,7 @@ Created a pipeline with the following steps:
 ### Testing
 Xunit was used to unit test the .NET Core code.
 A report was generated in the form of an HTML file from a "coverage.cobertura.xml" file.
+
 ![Coverage report summary](https://github.com/Andra1609/ConferenceApp/blob/main/readme_img/coverage_report_summary.png?raw=true)
 ![Coverage report details](https://github.com/Andra1609/ConferenceApp/blob/main/readme_img/coverage_report_details.png?raw=true)
 
