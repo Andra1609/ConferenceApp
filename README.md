@@ -76,6 +76,7 @@ Created a pipeline with the following steps:
 * Run the compiled code on Azure App Service
 
 ![Azure Devops](https://github.com/Andra1609/ConferenceApp/blob/main/readme_img/azure_devops.png?raw=true)
+![Azure Web App](https://github.com/Andra1609/ConferenceApp/blob/main/readme_img/webapp_published.png?raw=true)
 
 ## Risk Assessment
 ![Risk Assessment](https://github.com/Andra1609/ConferenceApp/blob/main/readme_img/risk_assessment.png?raw=true)
