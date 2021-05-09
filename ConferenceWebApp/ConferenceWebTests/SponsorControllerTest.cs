@@ -75,7 +75,18 @@ namespace ConferenceWebTests
         }
 
         [Fact]
-        public void UpdateSponsor_Test()
+        public void GetAllSponsorsView_Test()
+        {
+            // arrange
+            mockRepo.Setup(repo => repo.Sponsors.FindAll()).Returns(GetSponsors().ToList());
+            // act
+            var controllerActionResult = sponsorController.Details(It.IsAny<int>());
+            // assert
+            Assert.NotNull(controllerActionResult);
+        }
+
+        [Fact]
+        public void UpdateSponsorView_Test()
         {
             // arrange
             mockRepo.Setup(repo => repo.Conferences.FindByCondition(c => c.ID == It.IsAny<int>())).Returns(GetConferences());

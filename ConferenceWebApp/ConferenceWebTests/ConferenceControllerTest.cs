@@ -99,6 +99,7 @@ namespace ConferenceWebTests
             Assert.NotNull(controllerActionResult);
         }
 
+
         [Fact]
         public void AddConference_Test()
         {
@@ -109,19 +110,6 @@ namespace ConferenceWebTests
             // assert
             Assert.NotNull(controllerActionResult);
             Assert.IsType<RedirectToActionResult>(controllerActionResult);
-        }
-        
-        [Fact]
-        public void DeleteConference_Test()
-        {
-            // arrange
-            mockRepo.Setup(repo => repo.Conferences.FindByCondition(c => c.ID == It.IsAny<int>())).Returns(GetConferences());
-            mockRepo.Setup(repo => repo.Sponsors.FindByCondition(c => c.ID == It.IsAny<int>())).Returns(GetSponsors());
-            mockRepo.Setup(repo => repo.Conferences.Delete(GetConference()));
-            // act
-            var controllerActionResult = conferenceController.Delete(It.IsAny<int>());
-            // assert
-            Assert.NotNull(controllerActionResult);
         }
 
         [Fact]
@@ -159,6 +147,19 @@ namespace ConferenceWebTests
             // assert
             Assert.NotNull(controllerActionResult);
             //Assert.IsType<RedirectToActionResult>(controllerActionResult);
+        }
+
+        [Fact]
+        public void DeleteConference_Test()
+        {
+            // arrange
+            mockRepo.Setup(repo => repo.Conferences.FindByCondition(c => c.ID == It.IsAny<int>())).Returns(GetConferences());
+            mockRepo.Setup(repo => repo.Sponsors.FindByCondition(c => c.ID == It.IsAny<int>())).Returns(GetSponsors());
+            mockRepo.Setup(repo => repo.Conferences.Delete(GetConference()));
+            // act
+            var controllerActionResult = conferenceController.Delete(It.IsAny<int>());
+            // assert
+            Assert.NotNull(controllerActionResult);
         }
 
         private IEnumerable<Sponsor> GetSponsors()
