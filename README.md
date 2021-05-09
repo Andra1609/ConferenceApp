@@ -1,6 +1,6 @@
 # Conference Management System
 
-## Description
+## Brief
 CRUD application created in C# for conferences and sponsors. This project follows the MVC (Model, View, Controller) structure.
 
 ### Create a conference
@@ -65,7 +65,9 @@ To view all tasks associated with the user stories, please follow [this link](ht
 ![Database](https://github.com/Andra1609/ConferenceApp/blob/main/readme_img/db_diagram.png?raw=true)
 
 ## Risk Assessment
+Pictured below is an entity relationship diagram (ERD) showing the structure of the database.
 ![Risk Assessment](https://github.com/Andra1609/ConferenceApp/blob/main/readme_img/risk_assessment.png?raw=true)
+As shown in the ERD, the app models a one-to-many relationship between Conference entities and Sponsor entities.
 
 ## Future work
 * Creating an Angular based front-end
