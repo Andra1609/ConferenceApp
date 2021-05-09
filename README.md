@@ -61,6 +61,9 @@ To view all tasks associated with the user stories, please follow [this link](ht
 * Conference Controller
 * Sponsors Controller
 
+## Database Structure
+![Database](https://github.com/Andra1609/ConferenceApp/blob/main/readme_img/db_diagram.png?raw=true)
+
 ## Risk Assessment
 ![Risk Assessment](https://github.com/Andra1609/ConferenceApp/blob/main/readme_img/risk_assessment.png?raw=true)
 
