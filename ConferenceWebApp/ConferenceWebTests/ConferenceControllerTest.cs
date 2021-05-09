@@ -76,7 +76,29 @@ namespace ConferenceWebTests
             // assert
             Assert.NotNull(controllerActionResult);
         }
-        
+
+        [Fact]
+        public void GetConference_Test()
+        {
+            // arrange
+            mockRepo.Setup(repo => repo.Conferences.FindByCondition(c => c.ID == It.IsAny<int>())).Returns(GetConferences());
+            // act
+            var controllerActionResult = conferenceController.Details(It.IsAny<int>());
+            // assert
+            Assert.NotNull(controllerActionResult);
+        }
+
+        [Fact]
+        public void AddConferenceView_Test()
+        {
+            // arrange
+            mockRepo.Setup(repo => repo.Conferences.FindByCondition(c => c.ID == It.IsAny<int>())).Returns(GetConferences());
+            // act
+            var controllerActionResult = conferenceController.Create();
+            // assert
+            Assert.NotNull(controllerActionResult);
+        }
+
         [Fact]
         public void AddConference_Test()
         {
@@ -98,6 +120,18 @@ namespace ConferenceWebTests
             mockRepo.Setup(repo => repo.Conferences.Delete(GetConference()));
             // act
             var controllerActionResult = conferenceController.Delete(It.IsAny<int>());
+            // assert
+            Assert.NotNull(controllerActionResult);
+        }
+
+        [Fact]
+        public void UpdateConferenceView_Test()
+        {
+            // arrange
+            mockRepo.Setup(repo => repo.Conferences.FindByCondition(c => c.ID == It.IsAny<int>())).Returns(GetConferences());
+
+            // act
+            var controllerActionResult = conferenceController.Update(It.IsAny<int>());
             // assert
             Assert.NotNull(controllerActionResult);
         }

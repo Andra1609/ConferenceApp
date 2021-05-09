@@ -36,6 +36,11 @@ CRUD application created in C# for conferences and sponsors. This project follow
 | --- | ----------- |
 | .NET Framework | 5.0.202 |
 
+## Backlog
+Below is a screenshot of the backlog containing the epics, user stories, and tasks for this project. 
+![Backlog](https://github.com/Andra1609/ConferenceApp/blob/main/readme_img/backlog.png?raw=true)
+To view all tasks associated with the user stories, please follow [this link](https://andra-vasilcoiu.atlassian.net/jira/software/projects/CN/boards/3/backlog?issueParent=10017%2C10020%2C10051&selectedIssue=CN-2).
+
 ## Components
 
 ### Models
