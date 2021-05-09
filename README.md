@@ -62,12 +62,20 @@ To view all tasks associated with the user stories, please follow [this link](ht
 * Sponsors Controller
 
 ## Database Structure
+Pictured below is an entity relationship diagram (ERD) showing the structure of the database.
 ![Database](https://github.com/Andra1609/ConferenceApp/blob/main/readme_img/db_diagram.png?raw=true)
+As shown in the ERD, the app models a one-to-many relationship between Conference entities and Sponsor entities.
+
+### CI Pipeline
+Created a pipeline with the following steps:
+* Restore the dependencies of the project 
+* Build and compile the application
+* Publish the project to an artefact repository
+* Run the compiled code on Azure App Service
+![Azure Devops](https://github.com/Andra1609/ConferenceApp/blob/main/readme_img/azure_devops.png?raw=true)
 
 ## Risk Assessment
-Pictured below is an entity relationship diagram (ERD) showing the structure of the database.
 ![Risk Assessment](https://github.com/Andra1609/ConferenceApp/blob/main/readme_img/risk_assessment.png?raw=true)
-As shown in the ERD, the app models a one-to-many relationship between Conference entities and Sponsor entities.
 
 ### Testing
 Xunit was used to unit test the .NET Core code.
